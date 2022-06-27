@@ -1,14 +1,12 @@
 <template>
   <div class="home form">
     <form>
-      <p>{{descriptionMaxLength - description.length }} / {{descriptionMaxLength}}</p>
-         <div class="error" v-if="error">
-        {{ error }}
-      </div>
+      <p>{{ descriptionMaxLength - description.length }} / {{ descriptionMaxLength}}</p>
       <p>
         <label for="name">Description</label>
         <textarea maxlength="255" v-model="description" type="text" />
       </p>
+      <p class="errors" v-if="description"> {{ validateForm }}</p>
     </form>
   </div>
 </template>

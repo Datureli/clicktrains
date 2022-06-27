@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { reactive, toRefs, computed,ref } from "vue";
+import { reactive, toRefs, computed, ref } from "vue";
 let description = ref("");
 export function useForm() {
   const state = reactive({
@@ -10,16 +10,13 @@ export function useForm() {
   });
 
   const descriptionLength = computed(() => {
-    if (description.value) {
-      return description.value.length;
-    }
-    return "";
+    return description.value ? description.value.length : "";
   });
 
   const validateForm = computed(() => {
-   description ? "dsadsad" : "Text is required";
-   description.length > 255 ? "dsa" : "dsda"
+    return description.value.length === "" ? "" : "Text is required";
+    return (description.length = 255 ? "dsa" : "dsda");
   });
 
-  return {description, descriptionLength, validateForm, ...toRefs(state) };
+  return { description, descriptionLength, validateForm, ...toRefs(state) };
 }
