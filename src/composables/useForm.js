@@ -9,14 +9,14 @@ export function useForm() {
     vatOptions: [19, 21, 23, 25],
   });
 
-  const descriptionLength = computed(() => {
-    return description.value ? description.value.length : "";
-  });
-
   const validateForm = computed(() => {
-    return description.value.length === "" ? "" : "Text is required";
-    return (description.length = 255 ? "dsa" : "dsda");
+    if (!description.value) {
+      return "Text is required";
+    }
+    if (description.value.length == 255) {
+      return "You cant enter more than 255 characters";
+    }
   });
 
-  return { description, descriptionLength, validateForm, ...toRefs(state) };
+  return { description,  validateForm, ...toRefs(state) };
 }

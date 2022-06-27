@@ -6,7 +6,7 @@
         <label for="name">Description</label>
         <textarea maxlength="255" v-model="description" type="text" />
       </p>
-      <p class="errors" v-if="description"> {{ validateForm }}</p>
+      <p class="errors" @change="description < 0"> {{ validateForm }}</p>
     </form>
   </div>
 </template>
@@ -15,11 +15,11 @@
 import { useForm } from "../composables/useForm";
 export default {
   setup() {
-    let {description, descriptionLength, validateForm, ...toRefs } = useForm();
+    let {description,  validateForm, ...toRefs } = useForm();
 
     return {
       description,
-      descriptionLength,
+      
       validateForm,
       ...toRefs,
     };
