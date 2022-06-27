@@ -17,8 +17,8 @@ export function useForm() {
   });
 
   const validateForm = computed(() => {
-    state.description ? "true" : "Text is required";
-    state.description.length > 255 ? "dsa" : "dsda"
+   description ? "dsadsad" : "Text is required";
+   description.length > 255 ? "dsa" : "dsda"
   });
 
   return {description, descriptionLength, validateForm, ...toRefs(state) };

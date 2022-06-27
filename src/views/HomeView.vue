@@ -7,7 +7,7 @@
       </div>
       <p>
         <label for="name">Description</label>
-        <textarea id="name" v-model="description" type="text" name="name" />
+        <textarea maxlength="255" v-model="description" type="text" />
       </p>
     </form>
   </div>
