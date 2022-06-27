@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { reactive, toRefs, computed, ref } from "vue";
-let description = ref("");
+let description = ref([]);
 export function useForm() {
   const state = reactive({
     errors: [],
