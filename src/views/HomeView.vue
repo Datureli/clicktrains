@@ -1,34 +1,34 @@
 <template>
   <div class="home form">
-  <form action="">
-  <p>
-    <label for="name">Description</label>
-    <input
-      id="name"
-      v-model="name"
-      type="text"
-      name="name"
-    >
-  </p>
-  </form>
+    <form>
+      <p>{{descriptionMaxLength - description.length }} / {{descriptionMaxLength}}</p>
+         <div class="error" v-if="error">
+        {{ error }}
+      </div>
+      <p>
+        <label for="name">Description</label>
+        <textarea id="name" v-model="description" type="text" name="name" />
+      </p>
+    </form>
   </div>
 </template>
 
 <script>
-import { useForm } from '../composables/useForm'
+import { useForm } from "../composables/useForm";
 export default {
   setup() {
- let {validateForm,...toRefs} = useForm()
+    let {description, descriptionLength, validateForm, ...toRefs } = useForm();
 
- return {
-  validateForm,
-  ...toRefs
- }
-  }
-}
+    return {
+      description,
+      descriptionLength,
+      validateForm,
+      ...toRefs,
+    };
+  },
+};
 </script>
 <style>
-
 .form {
   width: 500px;
   height: 300px;

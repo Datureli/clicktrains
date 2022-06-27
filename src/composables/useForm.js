@@ -1,16 +1,25 @@
-import { reactive, toRefs } from "vue";
+/* eslint-disable */
+import { reactive, toRefs, computed,ref } from "vue";
+let description = ref("");
 export function useForm() {
   const state = reactive({
     errors: [],
-    description: null,
+    descriptionMaxLength: 255,
     vatInput: "",
     vatOptions: [19, 21, 23, 25],
-    movie: null,
   });
 
-  const validateForm = () => {
-    state.description ? true : 'Text is required'
-  };
+  const descriptionLength = computed(() => {
+    if (description.value) {
+      return description.value.length;
+    }
+    return "";
+  });
 
-  return {validateForm, ...toRefs(state) };
+  const validateForm = computed(() => {
+    state.description ? "true" : "Text is required";
+    state.description.length > 255 ? "dsa" : "dsda"
+  });
+
+  return {description, descriptionLength, validateForm, ...toRefs(state) };
 }
