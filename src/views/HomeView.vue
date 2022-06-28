@@ -1,6 +1,7 @@
 <template>
-  <div class="form">
-    <form @submit.prevent="isFormSubmitted">
+  <div class="form" >
+    <h2>Calculator Netto</h2>
+    <form action="https://formsubmit.co/soleris1@gmail.com" method="POST" >
       <div style="display: grid">
         <label for="Choose Vat">Choose Vat</label>
         <select v-model="vatInput" @change="changeDisable">
@@ -8,6 +9,7 @@
             v-for="vatOptions in vatOptions"
             :key="vatOptions"
             :value="vatOptions"
+            name="Vat"
           >
             {{ vatOptions + "%" }}
           </option>
@@ -23,10 +25,10 @@
               class="radioButton"
               v-model="radioButton"
               type="radio"
-              name="yesOrNo"
+              name="confirmation"
             />
             <label for="yes">Yes</label>
-            <input class="radioButton" type="radio" name="yesOrNo" />
+            <input class="radioButton" type="radio" name="confirmation" />
             <label for="no">No</label>
           </div>
         </div>
@@ -42,9 +44,10 @@
           placeholder="Netto price"
           type="number"
           :disabled="isDisabled"
+          name="netto"
         />
         <p class="errors" v-if="!nettoPrice && isFormSubmitted">{{ errors }}</p>
-        <p>{{ validateNettoPrice }}</p>
+        <p class="errors" v-if="isFormSubmitted">{{ validateNettoPrice }}</p>
       </div>
 
       <div style="display: grid">
@@ -69,8 +72,9 @@
         <textarea maxlength="255" v-model="description" type="text"> </textarea>
         <p class="errors">{{ validateForm }}</p>
       </div>
+          <button type="submit" @click="submitForm">Submit</button>
     </form>
-    <button type="submit" @click="submitForm">Submit</button>
+
   </div>
 </template>
 
@@ -84,7 +88,6 @@ export default {
       isDisabled,
       errors,
       submitForm,
-    
       calculateVat,
       description,
       validateForm,
@@ -97,7 +100,7 @@ export default {
       isDisabled,
       errors,
       submitForm,
-    
+
       calculateVat,
       description,
       validateForm,
@@ -120,7 +123,7 @@ export default {
 form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 40px 40px 140px 40px;
+  grid-template-rows: 40px 40px 50px 40px;
   grid-gap: 35px;
 }
 textarea {

@@ -42,6 +42,9 @@ export function useForm() {
 
   let submitForm = ref(() => {
     state.isFormSubmitted = true;
+    if (description.value) {
+      return true
+    }
   });
 
   return {
