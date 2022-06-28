@@ -2,7 +2,6 @@
 import { reactive, toRefs, computed, ref } from "vue";
 let description = ref([]);
 export function useForm() {
-
   const state = reactive({
     errors: "Text is required",
     descriptionMaxLength: 255,
@@ -23,25 +22,26 @@ export function useForm() {
     }
   });
 
-  const validateNettoPrice = reactive(() => {
-    return event.keyCode !== 69
-  })
+  const validateNettoPrice = computed(() => {
+    if (typeof state.nettoPrice !== "number") {
+      return "Please, input number";
+    }
+  });
 
   const isDisabled = computed(() => {
     return state.disabled === false;
-  })
+  });
   const changeDisable = ref(() => {
     state.disabled = true;
-  })
+  });
 
   let calculateVat = computed(() => {
     let calculateNetto = (state.nettoPrice / 100) * state.vatInput;
-    return state.nettoPrice + calculateNetto
+    return state.nettoPrice + calculateNetto;
   });
 
   let submitForm = ref(() => {
-    state.isFormSubmitted = true
-
+    state.isFormSubmitted = true;
   });
 
   return {
