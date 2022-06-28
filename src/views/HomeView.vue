@@ -1,12 +1,54 @@
 <template>
-  <div class="home form">
+  <div class="form">
     <form>
-      <p>{{ descriptionMaxLength - description.length }} / {{ descriptionMaxLength}}</p>
-      <p>
-        <label for="name">Description</label>
-        <textarea maxlength="255" v-model="description" type="text" />
-      </p>
-      <p class="errors" @change="description < 0"> {{ validateForm }}</p>
+      <div style="display: grid">
+        <label for="Choose Vat">Choose Vat</label>
+        <select :value="vatInput" v-model="vatInput">
+          <option value disabled>Choose vat</option>
+          <option
+            v-for="vatOptions in vatOptions"
+            :key="vatOptions"
+            :value="vatOptions"
+          >
+            {{ vatOptions + "%" }}
+          </option>
+        </select>
+      </div>
+
+      <div style="display: grid">
+        <label for="Send confirmation">Send Confirmation</label>
+        <div style="display: flex; margin-left: 70px">
+          <div style="display: flex">
+            <input class="radioButton" type="radio" name="yesOrNo" />
+            <label for="yes">Yes</label>
+            <input class="radioButton" type="radio" name="yesOrNo" />
+            <label for="no">No</label>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: grid">
+        <label for="price Netto EUR">Price Netto EUR</label>
+        <input v-model="nettoPrice" placeholder="Netto price" type="number" :disabled="isDisabled" />
+      </div>
+
+      <div style="display: grid">
+        <label for="price Brutto EUR">Price Brutto EUR</label>
+        <input  placeholder="Brutto price" type="number" :value="calculateVat" disabled />
+      </div>
+
+      <div style="display: grid">
+        <div style="display: flex">
+          <label>Description</label>
+          <p>
+            {{ descriptionMaxLength - description.length }} /
+            {{ descriptionMaxLength }}
+          </p>
+        </div>
+
+        <textarea maxlength="255" v-model="description" type="text"> </textarea>
+        <p class="errors" @change="description < 0">{{ validateForm }}</p>
+      </div>
     </form>
   </div>
 </template>
@@ -15,11 +57,11 @@
 import { useForm } from "../composables/useForm";
 export default {
   setup() {
-    let {description,  validateForm, ...toRefs } = useForm();
+    let {calculateVat, description, validateForm, ...toRefs } = useForm();
 
     return {
+      calculateVat,
       description,
-      
       validateForm,
       ...toRefs,
     };
@@ -29,36 +71,47 @@ export default {
 <style>
 .form {
   width: 500px;
-  height: 300px;
+  height: 350px;
   margin: auto;
   padding: 20px 30px;
   display: grid;
   justify-content: center;
   text-align: center;
-  box-shadow: -2px 0px 24px -9px rgba(66, 68, 90, 1);
+  box-shadow: -2px 0px 20px -9px rgba(66, 68, 90, 1);
+}
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 40px 40px 140px 40px;
+  grid-gap: 35px;
+}
+textarea {
+  height: 50px;
+  resize: none;
+  border-radius: 4px;
+}
+.radioButton {
+  margin-top: 4px;
 }
 
-.radioButton {
-  display: flex;
-}
 .errors {
-  display: block;
-  text-align: center;
-  color: red;
+  color: #ff0000;
   font-weight: 700;
 }
 label {
-  display: inline-block;
-  font-size: 15px;
+  font-size: 13px;
+  margin-bottom: 10px;
   font-weight: 800;
 }
 select {
-  width: 275px;
-  border: 2px solid #b9acac;
+  width: 230px;
+}
+input,select {
   border-radius: 4px;
-  display: block;
-  font-size: 14px;
-  padding: 10px;
+  outline: none;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #b9acac;
 }
 
 button {
@@ -72,9 +125,8 @@ button {
   transition: 0.8s;
 }
 p {
-  display: grid;
-  margin: auto;
-  font-size: 15px;
+margin-left: 10px;
+  font-size: 5px;
 }
 .successStatus {
   display: grid;
@@ -87,8 +139,5 @@ p {
   justify-content: center;
   border-radius: 50%;
   margin: 150px auto;
-}
-.successStatusParagraph {
-  font-size: 25px;
 }
 </style>

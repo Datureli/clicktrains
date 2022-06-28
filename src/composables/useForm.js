@@ -7,6 +7,7 @@ export function useForm() {
     descriptionMaxLength: 255,
     vatInput: "",
     vatOptions: [19, 21, 23, 25],
+    nettoPrice: "",
   });
 
   const validateForm = computed(() => {
@@ -18,5 +19,10 @@ export function useForm() {
     }
   });
 
-  return { description,  validateForm, ...toRefs(state) };
+  let calculateVat = computed(() => {
+    let calculateNetto = (state.nettoPrice / 100) * state.vatInput;
+    return state.nettoPrice - calculateNetto;
+  })
+
+  return {calculateVat, description,  validateForm, ...toRefs(state) };
 }
