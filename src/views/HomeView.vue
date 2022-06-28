@@ -41,6 +41,7 @@
           v-model="nettoPrice"
           placeholder="Netto price"
           type="number"
+          onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"
           :disabled="isDisabled"
         />
         <p class="errors" v-if="!nettoPrice && isFormSubmitted">{{ errors }}</p>
@@ -83,7 +84,7 @@ export default {
       isDisabled,
       errors,
       submitForm,
-      validateVatInput,
+    
       calculateVat,
       description,
       validateForm,
@@ -96,7 +97,7 @@ export default {
       isDisabled,
       errors,
       submitForm,
-      validateVatInput,
+    
       calculateVat,
       description,
       validateForm,
