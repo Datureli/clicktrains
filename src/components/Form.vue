@@ -26,6 +26,7 @@
         v-model="nettoPrice"
         min="1"
         type="number"
+        step="any"
         :disabled="isDisabled"
         name="netto"
       />
