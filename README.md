@@ -10,10 +10,12 @@ Application for calculate netto i brutto
 
 ## Features
 * form validation
-* description validation with validation including maxlength and required
+* description validation  including maxlength and required
 * Radio button validation including required and not checked by default
 * select input with vat values including required
-* 
+* Calculate brutto and netto price
+* Submit button with validation,sending form data to api endpoint 'https://formsubmit.co/'
+* data can be downloaded via email from 'https://formsubmit.co/'
 
 
 ## Technologies
@@ -28,6 +30,7 @@ working on
 To run this project, install it locally using npm:
 
 ```
+$ git clone https://github.com/Datureli/clicktrains.git
 $ cd frontEndLearning
 $ npm install
 $ npm run serve
