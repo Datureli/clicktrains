@@ -31,7 +31,7 @@ To run this project, install it locally using npm:
 
 ```
 $ git clone https://github.com/Datureli/clicktrains.git
-$ cd frontEndLearning
+$ cd clicktrains
 $ npm install
 $ npm run serve
 ```
