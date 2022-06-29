@@ -6,8 +6,9 @@
     @submit="submitForm"
   >
     <div class="displayGrid">
-      <label for="Choose Vat">Choose Vat</label>
+      <label for="Choose Vat">Vat</label>
       <select v-model="vatInput" @change="changeDisable" name="Vat">
+        <option value="" disabled>Choose VAT</option>
         <option
           v-for="vatOptions in vatOptions"
           :key="vatOptions"
@@ -23,6 +24,7 @@
       <label for="price Netto EUR">Price Netto EUR</label>
       <input
         v-model="nettoPrice"
+        min="1"
         type="number"
         :disabled="isDisabled"
         name="netto"
@@ -37,13 +39,7 @@
 
     <div class="displayGrid">
       <label for="price Brutto EUR">Price Brutto EUR</label>
-      <input
-        placeholder="Brutto price"
-        type="number"
-        :value="calculateVat"
-        readonly
-        name="brutto"
-      />
+      <input type="number" :value="calculateVat" readonly name="brutto" />
     </div>
 
     <div class="displayGrid">

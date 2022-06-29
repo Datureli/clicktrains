@@ -3,6 +3,7 @@ import { reactive, toRefs, computed, ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
 let description = ref([]);
 export function useForm() {
+
   const router = useRouter();
   const route = useRoute();
 
@@ -47,7 +48,7 @@ export function useForm() {
 
   let calculateVat = computed(() => {
     let calculateNetto = (state.nettoPrice / 100) * state.vatInput;
-    return state.nettoPrice + calculateNetto;
+    return state.nettoPrice + calculateNetto
   });
 
   let submitForm = ref((event) => {
