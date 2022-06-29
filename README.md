@@ -1,24 +1,34 @@
-# clicktrain
+## Table of contents
+* [General info](#general-info)
+* [Features](#features)
+* [Technologies](#technologies)
+* [Status](#status)
+* [Setup](#setup)
 
-## Project setup
+## General info
+Application for calculate netto i brutto
+
+## Features
+* Learn front-end topics by learning questions
+* randomQuestion function
+* disable answers 
+* Learn english IT words
+
+
+## Technologies
+Project is created with:
+* Vue 3.2.13
+* vue-router 4.0.3
+
+## Status
+working on
+	
+## Setup
+To run this project, install it locally using npm:
+
 ```
-npm install
+$ cd frontEndLearning
+$ npm install
+$ npm run serve
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
