@@ -43,5 +43,8 @@ If you want to get a copy of the data from the form, you should do the following
 * The action attribute contains a link to the api endpoint and a unique email provided at the end of the address
 * To get a copy, please enter your email address as follows "https://formsubmit.co/your-email-adress",
 * Example: "https://formsubmit.co/soleris1@gmail.com"
+* Fill in all the fields and click the submit button
+* In a new window you will be redirected to https://formsubmit.co/
+* Optionally, a re captcha test will appear, if this does not mean your copy has been sent
 
 
