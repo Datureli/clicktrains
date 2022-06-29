@@ -1,11 +1,10 @@
 /* eslint-disable */
 import { reactive, toRefs, computed, ref } from "vue";
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter, useRoute } from "vue-router";
 let description = ref([]);
 export function useForm() {
-
-  const router = useRouter()
-  const route = useRoute()
+  const router = useRouter();
+  const route = useRoute();
 
   const state = reactive({
     errors: "Text is required",
@@ -29,8 +28,8 @@ export function useForm() {
   });
 
   const returnSuccessStatus = computed(() => {
-    return state.successStatus
-  })
+    return state.successStatus;
+  });
 
   const validateNettoPrice = computed(() => {
     if (typeof state.nettoPrice !== "number") {
@@ -41,7 +40,7 @@ export function useForm() {
   const isDisabled = computed(() => {
     return state.disabled === false;
   });
-  
+
   const changeDisable = ref(() => {
     state.disabled = true;
   });
@@ -52,22 +51,22 @@ export function useForm() {
   });
 
   let submitForm = ref((event) => {
-    state.isFormSubmitted = true
-    state.successStatus = true
+    state.isFormSubmitted = true;
+    state.successStatus = true;
     if (typeof state.nettoPrice !== "number") {
-      return event.preventDefault()
-    } 
+      return event.preventDefault();
+    }
     if (description.value.length == 0) {
-      return event.preventDefault()
+      return event.preventDefault();
     }
     if (description.value.length == 255) {
-      return event.preventDefault()
+      return event.preventDefault();
     }
-    if (state.radioButton == '') {
-      return event.preventDefault()
+    if (state.radioButton == "") {
+      return event.preventDefault();
     }
-    router.push('/success')
-  })
+    setTimeout(() => router.push("/success"), 3000);
+  });
 
   return {
     validateNettoPrice,

@@ -4,17 +4,14 @@
       <h1>Calculator Netto</h1>
       <Form />
     </div>
-    <SuccessStatus  />
   </div>
 </template>
 
 <script>
 import Form from "../components/Form";
-import SuccessStatus from "../components/SucessStatus.vue";
 export default {
   components: {
     Form,
-    SuccessStatus,
   },
 };
 </script>
