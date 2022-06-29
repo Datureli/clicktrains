@@ -1,6 +1,7 @@
 ## Table of contents
 * [General info](#general-info)
 * [Features](#features)
+* [Copy of Content](#Copy of content)
 * [Technologies](#technologies)
 * [Status](#status)
 * [Setup](#setup)
