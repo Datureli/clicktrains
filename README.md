@@ -18,8 +18,6 @@ Application for calculate netto i brutto
 * Submit button with validation,sending form data to api endpoint 'https://formsubmit.co/'
 * data can be downloaded via email from 'https://formsubmit.co/'
 
-## Copy of content
-
 ## Technologies
 Project is created with:
 * Vue 3.2.13
@@ -37,4 +35,13 @@ $ cd frontEndLearning
 $ npm install
 $ npm run serve
 ```
+## Copy of content
+If you want to get a copy of the data from the form, you should do the following:
+* Follow the steps in setup
+* Go to the components folder and find a file named Form.vue
+* At the top there is the beginning of the form and the action attribute
+* The action attribute contains a link to the api endpoint and a unique email provided at the end of the address
+* To get a copy, please enter your email address as follows "https://formsubmit.co/your-email-adress",
+* Example: "https://formsubmit.co/soleris1@gmail.com"
+
 
