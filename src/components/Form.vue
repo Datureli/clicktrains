@@ -65,14 +65,9 @@
       <label for="Send confirmation">Send Confirmation</label>
       <div style="display: flex; margin-left: 70px">
         <div style="display: flex">
-          <input
-            class="radioButton"
-            v-model="radioButton"
-            type="radio"
-            name="confirmation"
-          />
+          <input v-model="radioButton" value="radio" type="radio" name="confirmation" />
           <label for="yes">Yes</label>
-          <input class="radioButton" type="radio" name="confirmation" />
+          <input type="radio" v-model="radioButton" value="radio2" name="confirmation" />
           <label for="no">No</label>
         </div>
       </div>
