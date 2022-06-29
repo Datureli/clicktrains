@@ -1,7 +1,7 @@
 ## Table of contents
 * [General info](#general-info)
 * [Features](#features)
-* [Copy of Content](#Copy-of-content)
+* [Copy of content](#Copy-of-content)
 * [Technologies](#technologies)
 * [Status](#status)
 * [Setup](#setup)
@@ -18,6 +18,7 @@ Application for calculate netto i brutto
 * Submit button with validation,sending form data to api endpoint 'https://formsubmit.co/'
 * data can be downloaded via email from 'https://formsubmit.co/'
 
+## Copy of content
 
 ## Technologies
 Project is created with:
