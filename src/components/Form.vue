@@ -70,15 +70,15 @@
         <div style="display: flex">
           <input
             v-model="radioButton"
-            value="radio"
             type="radio"
+            value="yes"
             name="confirmation"
           />
           <label for="yes">Yes</label>
           <input
-            type="radio"
             v-model="radioButton"
-            value="radio2"
+            type="radio"
+            value="no"
             name="confirmation"
           />
           <label for="no">No</label>
