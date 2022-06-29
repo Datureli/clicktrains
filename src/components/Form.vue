@@ -94,11 +94,9 @@ import { useForm } from "../composables/useForm";
 export default {
   setup() {
     let {
-      returnSuccessStatus,
       validateNettoPrice,
       changeDisable,
       isDisabled,
-      errors,
       submitForm,
       calculateVat,
       description,
@@ -107,11 +105,9 @@ export default {
     } = useForm();
 
     return {
-      returnSuccessStatus,
       validateNettoPrice,
       changeDisable,
       isDisabled,
-      errors,
       submitForm,
       calculateVat,
       description,

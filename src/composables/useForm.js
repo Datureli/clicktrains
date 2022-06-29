@@ -28,10 +28,6 @@ export function useForm() {
     }
   });
 
-  const returnSuccessStatus = computed(() => {
-    return state.successStatus;
-  });
-
   const validateNettoPrice = computed(() => {
     if (typeof state.nettoPrice !== "number") {
       return "Please, input number";
@@ -71,7 +67,6 @@ export function useForm() {
 
   return {
     validateNettoPrice,
-    returnSuccessStatus,
     changeDisable,
     isDisabled,
     submitForm,
