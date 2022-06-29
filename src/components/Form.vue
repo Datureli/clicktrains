@@ -23,13 +23,16 @@
       <label for="price Netto EUR">Price Netto EUR</label>
       <input
         v-model="nettoPrice"
-        placeholder="Netto price"
         type="number"
         :disabled="isDisabled"
         name="netto"
       />
-      <p class="errors" v-if="!nettoPrice && isFormSubmitted">{{ errors }}</p>
-      <p class="errors" v-if="isFormSubmitted">{{ validateNettoPrice }}</p>
+      <div style="display: flex">
+        <p class="errors" v-if="!nettoPrice && isFormSubmitted">
+          {{ errors && isFormSubmitted ? errors + "," : "" }}
+        </p>
+        <p class="errors" v-if="isFormSubmitted">{{ validateNettoPrice }}</p>
+      </div>
     </div>
 
     <div class="displayGrid">
@@ -38,7 +41,7 @@
         placeholder="Brutto price"
         type="number"
         :value="calculateVat"
-        disabled
+        readonly
         name="brutto"
       />
     </div>
@@ -59,15 +62,25 @@
         name="description"
       >
       </textarea>
-      <p class="errors">{{ validateForm }}</p>
+      <p class="errors">{{ validateDescription }}</p>
     </div>
     <div class="displayGrid">
       <label for="Send confirmation">Send Confirmation</label>
       <div style="display: flex; margin-left: 70px">
         <div style="display: flex">
-          <input v-model="radioButton" value="radio" type="radio" name="confirmation" />
+          <input
+            v-model="radioButton"
+            value="radio"
+            type="radio"
+            name="confirmation"
+          />
           <label for="yes">Yes</label>
-          <input type="radio" v-model="radioButton" value="radio2" name="confirmation" />
+          <input
+            type="radio"
+            v-model="radioButton"
+            value="radio2"
+            name="confirmation"
+          />
           <label for="no">No</label>
         </div>
       </div>
@@ -92,7 +105,7 @@ export default {
       submitForm,
       calculateVat,
       description,
-      validateForm,
+      validateDescription,
       ...toRefs
     } = useForm();
 
@@ -105,7 +118,7 @@ export default {
       submitForm,
       calculateVat,
       description,
-      validateForm,
+      validateDescription,
       ...toRefs,
     };
   },

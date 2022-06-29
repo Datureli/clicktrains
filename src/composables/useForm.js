@@ -9,8 +9,8 @@ export function useForm() {
   const state = reactive({
     errors: "Text is required",
     descriptionMaxLength: 255,
-    vatInput: "",
     vatOptions: [19, 21, 23, 25],
+    vatInput: "",
     nettoPrice: "",
     radioButton: "",
     disabled: false,
@@ -18,7 +18,7 @@ export function useForm() {
     successStatus: false,
   });
 
-  const validateForm = computed(() => {
+  const validateDescription = computed(() => {
     if (!description.value) {
       return "Text is required";
     }
@@ -76,7 +76,7 @@ export function useForm() {
     submitForm,
     calculateVat,
     description,
-    validateForm,
+    validateDescription,
     ...toRefs(state),
   };
 }
