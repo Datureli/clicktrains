@@ -1,15 +1,18 @@
 <template>
-  <div class="form" >
-    <h2>Calculator Netto</h2>
-    <form action="https://formsubmit.co/soleris1@gmail.com" method="POST" >
+  <div class="form">
+    <h1>Calculator Netto</h1>
+    <form
+      action="https://formsubmit.co/soleris1@gmail.com"
+      method="POST"
+      @submit="submitForm"
+    >
       <div style="display: grid">
         <label for="Choose Vat">Choose Vat</label>
-        <select v-model="vatInput" @change="changeDisable">
+        <select v-model="vatInput" @change="changeDisable" name="Vat">
           <option
             v-for="vatOptions in vatOptions"
             :key="vatOptions"
             :value="vatOptions"
-            name="Vat"
           >
             {{ vatOptions + "%" }}
           </option>
@@ -17,25 +20,7 @@
         <p class="errors" v-if="!vatInput && isFormSubmitted">{{ errors }}</p>
       </div>
 
-      <div style="display: grid">
-        <label for="Send confirmation">Send Confirmation</label>
-        <div style="display: flex; margin-left: 70px">
-          <div style="display: flex">
-            <input
-              class="radioButton"
-              v-model="radioButton"
-              type="radio"
-              name="confirmation"
-            />
-            <label for="yes">Yes</label>
-            <input class="radioButton" type="radio" name="confirmation" />
-            <label for="no">No</label>
-          </div>
-        </div>
-        <p class="errors" v-if="!radioButton && isFormSubmitted">
-          {{ errors }}
-        </p>
-      </div>
+  
 
       <div style="display: grid">
         <label for="price Netto EUR">Price Netto EUR</label>
@@ -57,6 +42,7 @@
           type="number"
           :value="calculateVat"
           disabled
+          name="brutto"
         />
       </div>
 
@@ -69,12 +55,36 @@
           </p>
         </div>
 
-        <textarea maxlength="255" v-model="description" type="text"> </textarea>
+        <textarea
+          maxlength="255"
+          v-model="description"
+          type="text"
+          name="description"
+        >
+        </textarea>
         <p class="errors">{{ validateForm }}</p>
       </div>
-          <button type="submit" @click="submitForm">Submit</button>
+          <div style="display: grid">
+        <label for="Send confirmation">Send Confirmation</label>
+        <div style="display: flex; margin-left: 70px">
+          <div style="display: flex">
+            <input
+              class="radioButton"
+              v-model="radioButton"
+              type="radio"
+              name="confirmation"
+            />
+            <label for="yes">Yes</label>
+            <input class="radioButton" type="radio" name="confirmation" />
+            <label for="no">No</label>
+          </div>
+        </div>
+        <p class="errors" v-if="!radioButton && isFormSubmitted">
+          {{ errors }}
+        </p>
+      </div>
+      <button type="submit">Submit</button>
     </form>
-
   </div>
 </template>
 
@@ -100,7 +110,6 @@ export default {
       isDisabled,
       errors,
       submitForm,
-
       calculateVat,
       description,
       validateForm,
@@ -112,23 +121,22 @@ export default {
 <style>
 .form {
   width: 500px;
-  height: 400px;
+  height: 500px;
   margin: auto;
-  padding: 20px 30px;
+  padding: 20px 10px;
   display: grid;
   justify-content: center;
   text-align: center;
-  box-shadow: -2px 0px 20px -9px rgba(66, 68, 90, 1);
+  box-shadow: -2px 0px 20px -9px rgb(71, 76, 136);
 }
 form {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 40px 40px 50px 40px;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: 40px 50px 30px 60px 20px 40px;
   grid-gap: 35px;
 }
 textarea {
   height: 50px;
-
   resize: none;
   border-radius: 4px;
 }
@@ -141,9 +149,7 @@ label {
   font-size: 13px;
   font-weight: 800;
 }
-select {
-  width: 230px;
-}
+
 input,
 select {
   border-radius: 4px;
@@ -162,7 +168,6 @@ button {
   border-radius: 4px;
   font-size: 20px;
   cursor: pointer;
-  transition: 0.4s;
 }
 p {
   margin-left: 10px;

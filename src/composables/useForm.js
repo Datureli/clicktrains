@@ -31,6 +31,7 @@ export function useForm() {
   const isDisabled = computed(() => {
     return state.disabled === false;
   });
+  
   const changeDisable = ref(() => {
     state.disabled = true;
   });
@@ -40,12 +41,22 @@ export function useForm() {
     return state.nettoPrice + calculateNetto;
   });
 
-  let submitForm = ref(() => {
-    state.isFormSubmitted = true;
-    if (description.value) {
-      return true
+  let submitForm = ref((event) => {
+    state.isFormSubmitted = true
+    if (typeof state.nettoPrice !== "number") {
+      return event.preventDefault()
+    } 
+    if (description.value.length == 0) {
+      return event.preventDefault()
     }
-  });
+    if (description.value.length == 255) {
+      return event.preventDefault()
+    }
+    if (state.radioButton == '') {
+      return event.preventDefault()
+    }
+    
+  })
 
   return {
     validateNettoPrice,
