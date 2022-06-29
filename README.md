@@ -9,10 +9,11 @@
 Application for calculate netto i brutto
 
 ## Features
-* Learn front-end topics by learning questions
-* randomQuestion function
-* disable answers 
-* Learn english IT words
+* form validation
+* description validation with validation including maxlength and required
+* Radio button validation including required and not checked by default
+* select input with vat values including required
+* 
 
 
 ## Technologies
