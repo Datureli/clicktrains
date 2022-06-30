@@ -26,7 +26,15 @@ export function useForm() {
     if (description.value.length == 255) {
       return "You cant enter more than 255 characters";
     }
+    else if (state.isFormSubmitted && !description.value) {
+      return "Text is required";
+    }
   });
+
+  const calculateDescriptionLength = computed(() => {
+    let remainingLength = state.descriptionMaxLength - description.value.length
+    return `${remainingLength} / ${state.descriptionMaxLength}`
+  })
 
   const validateNettoPrice = computed(() => {
     if (typeof state.nettoPrice !== "number") {
@@ -66,6 +74,7 @@ export function useForm() {
   });
 
   return {
+    calculateDescriptionLength,
     validateNettoPrice,
     changeDisable,
     isDisabled,

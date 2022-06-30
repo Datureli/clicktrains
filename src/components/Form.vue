@@ -47,8 +47,7 @@
       <div style="display: flex">
         <label>Description</label>
         <p>
-          {{ descriptionMaxLength - description.length }} /
-          {{ descriptionMaxLength }}
+          {{ calculateDescriptionLength }}
         </p>
       </div>
 
@@ -59,7 +58,10 @@
         name="description"
       >
       </textarea>
-      <p class="errors">{{ validateDescription }}</p>
+      <p class="errors" v-if="!isFormSubmitted">
+        {{ validateDescription }}
+      </p>
+      <p class="errors" v-else>{{ errors }}</p>
     </div>
     <div class="displayGrid">
       <label for="Send confirmation">Send Confirmation</label>
@@ -95,6 +97,7 @@ export default {
   setup() {
     let {
       validateNettoPrice,
+      calculateDescriptionLength,
       changeDisable,
       isDisabled,
       submitForm,
@@ -106,6 +109,7 @@ export default {
 
     return {
       validateNettoPrice,
+      calculateDescriptionLength,
       changeDisable,
       isDisabled,
       submitForm,

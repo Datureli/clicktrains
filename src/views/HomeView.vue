@@ -17,12 +17,12 @@ export default {
 </script>
 <style>
 .formContainer {
-  width: 500px;
+  width: 420px;
   height: 500px;
   margin: auto;
   padding: 20px 10px;
   display: grid;
   justify-content: center;
-  box-shadow: -2px 0px 20px -9px rgb(71, 76, 136);
+  box-shadow: 0px 0px 20px -9px rgb(71, 76, 136);
 }
 </style>
