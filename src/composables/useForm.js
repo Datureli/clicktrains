@@ -1,7 +1,8 @@
 /* eslint-disable */
 import { reactive, toRefs, computed, ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
-import { description, descriptionMaxLength } from "./useDescription";
+import { useDescription } from "./useDescription";
+let { description,descriptionMaxLength } = useDescription()
 export function useForm() {
   const router = useRouter();
   const route = useRoute();

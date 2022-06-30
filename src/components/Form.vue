@@ -42,27 +42,8 @@
       <label for="price Brutto EUR">Price Brutto EUR</label>
       <input type="number" :value="calculateVat" readonly name="brutto" />
     </div>
-
-    <div class="displayGrid">
-      <div style="display: flex">
-        <label>Description</label>
-        <p>
-          {{ calculateDescriptionLength }}
-        </p>
-      </div>
-
-      <textarea
-        maxlength="255"
-        v-model="description"
-        type="text"
-        name="description"
-      >
-      </textarea>
-      <p class="errors" v-if="!isFormSubmitted">
-        {{ validateDescription }}
-      </p>
-      <p class="errors" v-else>{{ errors }}</p>
-    </div>
+    <Description />
+  
     <div class="displayGrid">
       <label for="Send confirmation">Send Confirmation</label>
       <div style="display: flex; margin-left: 70px">
@@ -93,15 +74,12 @@
 
 <script>
 import { useForm } from "../composables/useForm";
-import { useDescription } from "../composables/useDescription";
+import Description from '../components/parts/Description.vue'
 export default {
+  components: {
+    Description
+  },
   setup() {
-    let {
-      description,
-      descriptionMaxLength,
-      validateDescription,
-      calculateDescriptionLength,
-    } = useDescription();
     let {
       validateNettoPrice,
       changeDisable,
@@ -113,14 +91,10 @@ export default {
 
     return {
       validateNettoPrice,
-      calculateDescriptionLength,
       changeDisable,
       isDisabled,
       submitForm,
       calculateVat,
-      description,
-      validateDescription,
-      descriptionMaxLength,
       ...toRefs,
     };
   },
@@ -132,11 +106,6 @@ form {
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: 40px 50px 30px 60px 20px 40px;
   grid-gap: 35px;
-}
-textarea {
-  height: 50px;
-  resize: none;
-  border-radius: 4px;
 }
 
 .displayGrid {
