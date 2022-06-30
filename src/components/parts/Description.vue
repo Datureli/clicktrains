@@ -14,10 +14,12 @@
       name="description"
     >
     </textarea>
-    <p class="errors" v-if="!isFormSubmitted">
+    <p class="errors">
       {{ validateDescription }}
     </p>
-    <p class="errors" v-else>{{ errors }}</p>
+    <p class="errors" v-if="description !== null">
+      {{ errors }}
+    </p>
   </div>
 </template>
 
@@ -48,5 +50,7 @@ textarea {
   resize: none;
   border-radius: 4px;
 }
-
+label {
+  margin-left: 60px;
+}
 </style>

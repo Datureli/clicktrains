@@ -1,8 +1,7 @@
-import { reactive, toRefs, computed, ref } from "vue";
+import { computed, ref } from "vue";
 let description = ref([]);
-let descriptionMaxLength = reactive(255)
+let descriptionMaxLength = 255;
 export function useDescription() {
-  
   const validateDescription = computed(() => {
     if (!description.value) {
       return "Text is required";
@@ -21,6 +20,6 @@ export function useDescription() {
     description,
     descriptionMaxLength,
     validateDescription,
-    calculateDescriptionLength
-  }
+    calculateDescriptionLength,
+  };
 }

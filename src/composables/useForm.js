@@ -2,7 +2,7 @@
 import { reactive, toRefs, computed, ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useDescription } from "./useDescription";
-let { description,descriptionMaxLength } = useDescription()
+let { description, descriptionMaxLength } = useDescription();
 export function useForm() {
   const router = useRouter();
   const route = useRoute();
@@ -61,7 +61,6 @@ export function useForm() {
     isDisabled,
     submitForm,
     calculateVat,
-
     ...toRefs(state),
   };
 }

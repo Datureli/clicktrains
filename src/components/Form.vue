@@ -43,7 +43,7 @@
       <input type="number" :value="calculateVat" readonly name="brutto" />
     </div>
     <Description />
-  
+
     <div class="displayGrid">
       <label for="Send confirmation">Send Confirmation</label>
       <div style="display: flex; margin-left: 70px">
@@ -68,16 +68,18 @@
         {{ errors }}
       </p>
     </div>
-    <button type="submit">Submit</button>
+    <Button />
   </form>
 </template>
 
 <script>
 import { useForm } from "../composables/useForm";
-import Description from '../components/parts/Description.vue'
+import Description from "../components/parts/Description";
+import Button from "../components/parts/Button.vue";
 export default {
   components: {
-    Description
+    Description,
+    Button,
   },
   setup() {
     let {
@@ -130,16 +132,6 @@ select {
   border-bottom: 2px solid #b9acac;
 }
 
-button {
-  width: 100px;
-  justify-content: center;
-  margin: auto;
-  background-color: #8294b9;
-  border: 2px solid #8294b9;
-  border-radius: 4px;
-  font-size: 20px;
-  cursor: pointer;
-}
 p {
   margin-left: 10px;
   font-size: 5px;
