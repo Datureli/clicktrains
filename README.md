@@ -24,7 +24,7 @@ Project is created with:
 * vue-router 4.0.3
 
 ## Status
-working on
+works on breaking down components into smaller files and logic into smaller more reusable parts
 	
 ## Setup
 To run this project, install it locally using npm:
