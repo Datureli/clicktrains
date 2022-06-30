@@ -93,17 +93,21 @@
 
 <script>
 import { useForm } from "../composables/useForm";
+import { useDescription } from "../composables/useDescription";
 export default {
   setup() {
     let {
-      validateNettoPrice,
+      description,
+      descriptionMaxLength,
+      validateDescription,
       calculateDescriptionLength,
+    } = useDescription();
+    let {
+      validateNettoPrice,
       changeDisable,
       isDisabled,
       submitForm,
       calculateVat,
-      description,
-      validateDescription,
       ...toRefs
     } = useForm();
 
@@ -116,6 +120,7 @@ export default {
       calculateVat,
       description,
       validateDescription,
+      descriptionMaxLength,
       ...toRefs,
     };
   },

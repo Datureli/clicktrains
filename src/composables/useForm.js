@@ -1,15 +1,13 @@
 /* eslint-disable */
 import { reactive, toRefs, computed, ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
-let description = ref([]);
+import { description, descriptionMaxLength } from "./useDescription";
 export function useForm() {
-
   const router = useRouter();
   const route = useRoute();
 
   const state = reactive({
     errors: "Text is required",
-    descriptionMaxLength: 255,
     vatOptions: [19, 21, 23, 25],
     vatInput: "",
     nettoPrice: "",
@@ -18,23 +16,6 @@ export function useForm() {
     isFormSubmitted: false,
     successStatus: false,
   });
-
-  const validateDescription = computed(() => {
-    if (!description.value) {
-      return "Text is required";
-    }
-    if (description.value.length == 255) {
-      return "You cant enter more than 255 characters";
-    }
-    else if (state.isFormSubmitted && !description.value) {
-      return "Text is required";
-    }
-  });
-
-  const calculateDescriptionLength = computed(() => {
-    let remainingLength = state.descriptionMaxLength - description.value.length
-    return `${remainingLength} / ${state.descriptionMaxLength}`
-  })
 
   const validateNettoPrice = computed(() => {
     if (typeof state.nettoPrice !== "number") {
@@ -52,7 +33,7 @@ export function useForm() {
 
   let calculateVat = computed(() => {
     let calculateNetto = (state.nettoPrice / 100) * state.vatInput;
-    return state.nettoPrice + calculateNetto
+    return state.nettoPrice + calculateNetto;
   });
 
   let submitForm = ref((event) => {
@@ -74,14 +55,12 @@ export function useForm() {
   });
 
   return {
-    calculateDescriptionLength,
     validateNettoPrice,
     changeDisable,
     isDisabled,
     submitForm,
     calculateVat,
-    description,
-    validateDescription,
+
     ...toRefs(state),
   };
 }
